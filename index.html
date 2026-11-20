@@ -72,10 +72,10 @@ h2{font:400 clamp(38px,5.4vw,72px)/.94 var(--d);text-transform:uppercase;margin:
 .open:focus-visible{outline:3px solid var(--pink);outline-offset:8px}
 .project:nth-child(odd) .open{transform:rotate(-.5deg)}.project:nth-child(even) .open{transform:rotate(.6deg)}
 .open:hover{transform:rotate(0) translateY(-6px)!important}
-.sh{filter:drop-shadow(5px 5px 0 var(--ink))}
-.frame{position:relative;aspect-ratio:1.5;background:var(--paper2);overflow:hidden;clip-path:var(--tear)}
+.sh{display:block;filter:drop-shadow(5px 5px 0 var(--ink))}
+.frame{display:block;position:relative;aspect-ratio:1.5;background:var(--paper2);overflow:hidden;clip-path:var(--tear)}
 .project:nth-child(even) .frame{clip-path:var(--tear2)}
-.frame img{position:relative;z-index:2;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.frame img{display:block;position:relative;z-index:2;width:100%;height:100%;object-fit:cover;transition:transform .6s}
 .open:hover .frame img{transform:scale(1.05)}
 .ph{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;background:repeating-linear-gradient(135deg,transparent 0 12px,rgba(15,13,12,.09) 12px 14px)}
 .ph b{font:400 clamp(20px,2.4vw,28px)/1 var(--d);text-transform:uppercase;color:rgba(15,13,12,.55)}
@@ -189,17 +189,16 @@ dialog::backdrop{background:rgba(15,13,12,.94)}
         <div class="cap"><h3>Liga da Consciência — Festo</h3></div>
       </article>
 
-      <!-- Case 2: SPFC -->
-      <article class="project">
-        <button class="open" type="button" data-case="spfc" aria-label="Abrir São Paulo FC — 30 anos do Mundial">
+      <!-- Placeholder 02 (ex-SPFC) -->
+      <article class="project placeholder-card" aria-hidden="true">
+        <div class="open">
           <span class="sh">
             <span class="frame">
-              <img src="assets/spfc-capa.jpg" alt="São Paulo FC — 30 anos do Mundial" onerror="this.style.display='none'">
-              <span class="ph"><b>São Paulo FC<br>1992</b><small>assets/spfc-capa.jpg</small></span>
+              <span class="ph"><b>Em breve</b><small>Case 02</small></span>
             </span>
           </span>
-        </button>
-        <div class="cap"><h3>São Paulo FC — 30 anos do Mundial</h3></div>
+        </div>
+        <div class="cap"><h3 style="color:var(--muted)">Próximo projeto</h3></div>
       </article>
 
       <!-- Placeholder 03 -->
@@ -305,17 +304,6 @@ const C={
       'Meu trabalho foi a criação dos personagens e a aplicação visual deles nas HQs.'
     ],
     i:['assets/festo-liga-capa.jpg','assets/festo-liga-hq.jpg']
-  },
-  spfc:{
-    t:'São Paulo FC — 30 anos do Mundial',
-    m:'Estudo conceitual · Direção de arte, ilustração e linguagem visual',
-    g:['Estudo conceitual','Ilustração','Direção de arte'],
-    d:[
-      'Desenvolvi este estudo visual para celebrar os 30 anos da conquista mundial do São Paulo FC em 1992. É um estudo autoral, sem vínculo com o clube.',
-      'Explorei a memória afetiva do torcedor com ilustrações autorais, manipulação de imagens e uma linguagem gráfica que mistura referências esportivas, elementos retrô e cultura de colecionáveis.',
-      '[Texto do case: desafio, conceito, processo e aplicações. A escrever.]'
-    ],
-    i:['assets/spfc-capa.jpg','assets/spfc-box.jpg','assets/spfc-camiseta-poster.jpg','assets/spfc-copos.jpg','assets/spfc-livreto.jpg']
   }
 };
 
