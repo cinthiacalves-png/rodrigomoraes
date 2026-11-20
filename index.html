@@ -73,7 +73,7 @@ h2{font:400 clamp(38px,5.4vw,72px)/.94 var(--d);text-transform:uppercase;margin:
 .project:nth-child(odd) .open{transform:rotate(-.5deg)}.project:nth-child(even) .open{transform:rotate(.6deg)}
 .open:hover{transform:rotate(0) translateY(-6px)!important}
 .sh{filter:drop-shadow(5px 5px 0 var(--ink))}
-.frame{position:relative;aspect-ratio:1.3;background:var(--paper2);overflow:hidden;clip-path:var(--tear)}
+.frame{position:relative;aspect-ratio:1.5;background:var(--paper2);overflow:hidden;clip-path:var(--tear)}
 .project:nth-child(even) .frame{clip-path:var(--tear2)}
 .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
 .open:hover .frame img{transform:scale(1.05)}
@@ -172,12 +172,12 @@ dialog::backdrop{background:rgba(15,13,12,.94)}
       <p>Projetos, estudos e experimentações. Toque em um trabalho para ver os detalhes e dar zoom.</p>
     </div>
     <div class="grid">
+      <article class="project"><button class="open" type="button" data-case="festo" aria-label="Abrir Liga da Consciência — Festo">
+        <span class="sh"><span class="frame"><img src="assets/festo-liga-capa.jpg" alt="Personagens da Liga da Consciência diante de um monstro rosa, campanha de endomarketing da Festo" onerror="this.remove()"><span class="ph"><b>Liga da<br>Consciência</b><small>assets/festo-liga-capa.jpg</small></span></span></span></button>
+        <div class="cap"><h3>Liga da Consciência — Festo</h3></div></article>
       <article class="project"><button class="open" type="button" data-case="spfc" aria-label="Abrir São Paulo FC — 30 anos do Mundial">
         <span class="sh"><span class="frame"><img src="assets/spfc-capa.jpg" alt="" onerror="this.remove()"><span class="ph"><b>São Paulo FC<br>1992</b><small>assets/spfc-capa.jpg</small></span></span></span></button>
         <div class="cap"><h3>São Paulo FC — 30 anos do Mundial</h3></div></article>
-      <article class="project"><button class="open" type="button" data-case="p2" aria-label="Abrir projeto 02">
-        <span class="sh"><span class="frame"><img src="assets/case-02.jpg" alt="" onerror="this.remove()"><span class="ph"><b>Projeto 02</b><small>assets/case-02.jpg</small></span></span></span></button>
-        <div class="cap"><h3>Nome do projeto</h3></div></article>
       <article class="project"><button class="open" type="button" data-case="p3" aria-label="Abrir projeto 03">
         <span class="sh"><span class="frame"><img src="assets/case-03.jpg" alt="" onerror="this.remove()"><span class="ph"><b>Projeto 03</b><small>assets/case-03.jpg</small></span></span></span></button>
         <div class="cap"><h3>Nome do projeto</h3></div></article>
@@ -228,7 +228,10 @@ band.append(...[...band.children].map(n=>{const c=n.cloneNode(true);c.setAttribu
 const C={spfc:{t:'São Paulo FC — 30 anos do Mundial',m:'Estudo conceitual · Direção de arte, ilustração e linguagem visual',g:['Estudo conceitual','Ilustração','Direção de arte'],
 d:['Desenvolvi este estudo visual para celebrar os 30 anos da conquista mundial do São Paulo FC em 1992. É um estudo autoral, sem vínculo com o clube.','Explorei a memória afetiva do torcedor com ilustrações autorais, manipulação de imagens e uma linguagem gráfica que mistura referências esportivas, elementos retrô e cultura de colecionáveis.','[Texto do case: desafio, conceito, processo e aplicações. A escrever.]'],
 i:['assets/spfc-capa.jpg','assets/spfc-box.jpg','assets/spfc-camiseta-poster.jpg','assets/spfc-copos.jpg','assets/spfc-livreto.jpg']}};
-for(let n=2;n<=5;n++)C['p'+n]={t:'Nome do projeto',m:'Categoria · Ano',g:['Categoria'],d:['[Resumo do case: desafio, solução e resultado. Em breve.]'],i:[]};
+C.festo={t:'Liga da Consciência — Festo',m:'Endomarketing · Criação de personagens e HQ',g:['Endomarketing','Personagens','Ilustração','HQ'],
+d:['Criei os personagens da Liga da Consciência, uma equipe de heróis usada em histórias em quadrinhos para conversar com os funcionários da Festo, empresa de automação industrial, sobre segurança no trabalho, produtividade e combate ao desperdício.','Em vez de um comunicado sério, cada tema ganhou um personagem com personalidade própria. Eles vivem em quadrinhos de linguagem direta e visual de gibi, para que a mensagem seja lida, lembrada e comentada pela equipe.','Meu trabalho foi a criação dos personagens e a aplicação visual deles nas HQs.'],
+i:['assets/festo-liga-capa.jpg','assets/festo-liga-hq.jpg']};
+for(let n=3;n<=5;n++)C['p'+n]={t:'Nome do projeto',m:'Categoria · Ano',g:['Categoria'],d:['[Resumo do case: desafio, solução e resultado. Em breve.]'],i:[]};
 const $=s=>document.querySelector(s),dlg=$('#dlg'),st=$('#stage'),vi=$('#vi'),th=$('#thumbs');let cur,ix=0;
 function show(k){const c=C[cur],n=c.i.length;ix=n?(k+n)%n:0;st.classList.remove('z');vi.hidden=!n;
  if(n){vi.src=c.i[ix];vi.alt=c.t+' — imagem '+(ix+1)+' de '+n}
