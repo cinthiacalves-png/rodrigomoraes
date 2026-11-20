@@ -75,11 +75,15 @@ h2{font:400 clamp(38px,5.4vw,72px)/.94 var(--d);text-transform:uppercase;margin:
 .sh{filter:drop-shadow(5px 5px 0 var(--ink))}
 .frame{position:relative;aspect-ratio:1.5;background:var(--paper2);overflow:hidden;clip-path:var(--tear)}
 .project:nth-child(even) .frame{clip-path:var(--tear2)}
-.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.frame img{position:relative;z-index:2;width:100%;height:100%;object-fit:cover;transition:transform .6s}
 .open:hover .frame img{transform:scale(1.05)}
-.ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;background:repeating-linear-gradient(135deg,transparent 0 12px,rgba(15,13,12,.09) 12px 14px)}
-.ph b{font:400 clamp(20px,2.4vw,28px)/1 var(--d);text-transform:uppercase;color:rgba(15,13,12,.5)}
+.ph{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;background:repeating-linear-gradient(135deg,transparent 0 12px,rgba(15,13,12,.09) 12px 14px)}
+.ph b{font:400 clamp(20px,2.4vw,28px)/1 var(--d);text-transform:uppercase;color:rgba(15,13,12,.55)}
 .ph small{font:400 12px var(--t);text-transform:uppercase;margin-top:8px;color:var(--muted)}
+.placeholder-card{opacity:.85}
+.placeholder-card .open{cursor:default}
+.placeholder-card .open:hover{transform:none!important}
+.placeholder-card .frame{border:2px dashed rgba(15,13,12,.35)}
 .cap{padding-top:20px}
 .cap h3{font:400 clamp(20px,2vw,25px)/1.05 var(--d);text-transform:uppercase;margin:0}
 .about{display:grid;grid-template-columns:.75fr 1.25fr;gap:8%;padding:40px 0 100px;align-items:start}
@@ -105,12 +109,12 @@ dialog::backdrop{background:rgba(15,13,12,.94)}
 @keyframes vin{from{opacity:0;transform:scale(.97)}}
 .mn{display:flex;flex-direction:column;min-width:0;min-height:0}
 .stage{flex:1;position:relative;overflow:auto;display:flex;padding:24px;cursor:zoom-in}
-.stage img{margin:auto;max-width:100%;max-height:100%;object-fit:contain}
+.stage img{position:relative;z-index:2;margin:auto;max-width:100%;max-height:100%;object-fit:contain}
 .stage.z{cursor:zoom-out}.stage.z img{max-width:none;max-height:none;width:230%;margin:0}
 .stage .ph b{color:rgba(233,225,207,.5)}.stage .ph small{color:#a89f8c}
 .stage .ph{pointer-events:none}
 .thumbs{display:flex;gap:8px;padding:8px 24px 18px;overflow:auto}
-.thumbs button{all:unset;cursor:pointer;flex:none;width:84px;height:60px;border:3px solid transparent;opacity:.6}
+.thumbs button{all:unset;cursor:pointer;flex:none;width:84px;height:60px;border:3px solid transparent;opacity:.6;background:var(--paper2)}
 .thumbs button.on{border-color:var(--acid);opacity:1}
 .thumbs button:focus-visible{outline:3px solid var(--pink)}
 .thumbs img{width:100%;height:100%;object-fit:cover}
@@ -172,21 +176,79 @@ dialog::backdrop{background:rgba(15,13,12,.94)}
       <p>Projetos, estudos e experimentações. Toque em um trabalho para ver os detalhes e dar zoom.</p>
     </div>
     <div class="grid">
-      <article class="project"><button class="open" type="button" data-case="festo" aria-label="Abrir Liga da Consciência — Festo">
-        <span class="sh"><span class="frame"><img src="assets/festo-liga-capa.jpg" alt="Personagens da Liga da Consciência diante de um monstro rosa, campanha de endomarketing da Festo" onerror="this.remove()"><span class="ph"><b>Liga da<br>Consciência</b><small>assets/festo-liga-capa.jpg</small></span></span></span></button>
-        <div class="cap"><h3>Liga da Consciência — Festo</h3></div></article>
-      <article class="project"><button class="open" type="button" data-case="spfc" aria-label="Abrir São Paulo FC — 30 anos do Mundial">
-        <span class="sh"><span class="frame"><img src="assets/spfc-capa.jpg" alt="" onerror="this.remove()"><span class="ph"><b>São Paulo FC<br>1992</b><small>assets/spfc-capa.jpg</small></span></span></span></button>
-        <div class="cap"><h3>São Paulo FC — 30 anos do Mundial</h3></div></article>
-      <article class="project"><button class="open" type="button" data-case="p3" aria-label="Abrir projeto 03">
-        <span class="sh"><span class="frame"><img src="assets/case-03.jpg" alt="" onerror="this.remove()"><span class="ph"><b>Projeto 03</b><small>assets/case-03.jpg</small></span></span></span></button>
-        <div class="cap"><h3>Nome do projeto</h3></div></article>
-      <article class="project"><button class="open" type="button" data-case="p4" aria-label="Abrir projeto 04">
-        <span class="sh"><span class="frame"><img src="assets/case-04.jpg" alt="" onerror="this.remove()"><span class="ph"><b>Projeto 04</b><small>assets/case-04.jpg</small></span></span></span></button>
-        <div class="cap"><h3>Nome do projeto</h3></div></article>
-      <article class="project"><button class="open" type="button" data-case="p5" aria-label="Abrir projeto 05">
-        <span class="sh"><span class="frame"><img src="assets/case-05.jpg" alt="" onerror="this.remove()"><span class="ph"><b>Projeto 05</b><small>assets/case-05.jpg</small></span></span></span></button>
-        <div class="cap"><h3>Nome do projeto</h3></div></article>
+      <!-- Case 1: Festo -->
+      <article class="project">
+        <button class="open" type="button" data-case="festo" aria-label="Abrir Liga da Consciência — Festo">
+          <span class="sh">
+            <span class="frame">
+              <img src="assets/festo-liga-capa.jpg" alt="Personagens da Liga da Consciência diante de um monstro rosa, campanha de endomarketing da Festo" onerror="this.style.display='none'">
+              <span class="ph"><b>Liga da<br>Consciência</b><small>assets/festo-liga-capa.jpg</small></span>
+            </span>
+          </span>
+        </button>
+        <div class="cap"><h3>Liga da Consciência — Festo</h3></div>
+      </article>
+
+      <!-- Case 2: SPFC -->
+      <article class="project">
+        <button class="open" type="button" data-case="spfc" aria-label="Abrir São Paulo FC — 30 anos do Mundial">
+          <span class="sh">
+            <span class="frame">
+              <img src="assets/spfc-capa.jpg" alt="São Paulo FC — 30 anos do Mundial" onerror="this.style.display='none'">
+              <span class="ph"><b>São Paulo FC<br>1992</b><small>assets/spfc-capa.jpg</small></span>
+            </span>
+          </span>
+        </button>
+        <div class="cap"><h3>São Paulo FC — 30 anos do Mundial</h3></div>
+      </article>
+
+      <!-- Placeholder 03 -->
+      <article class="project placeholder-card" aria-hidden="true">
+        <div class="open">
+          <span class="sh">
+            <span class="frame">
+              <span class="ph"><b>Em breve</b><small>Case 03</small></span>
+            </span>
+          </span>
+        </div>
+        <div class="cap"><h3 style="color:var(--muted)">Próximo projeto</h3></div>
+      </article>
+
+      <!-- Placeholder 04 -->
+      <article class="project placeholder-card" aria-hidden="true">
+        <div class="open">
+          <span class="sh">
+            <span class="frame">
+              <span class="ph"><b>Em breve</b><small>Case 04</small></span>
+            </span>
+          </span>
+        </div>
+        <div class="cap"><h3 style="color:var(--muted)">Próximo projeto</h3></div>
+      </article>
+
+      <!-- Placeholder 05 -->
+      <article class="project placeholder-card" aria-hidden="true">
+        <div class="open">
+          <span class="sh">
+            <span class="frame">
+              <span class="ph"><b>Em breve</b><small>Case 05</small></span>
+            </span>
+          </span>
+        </div>
+        <div class="cap"><h3 style="color:var(--muted)">Próximo projeto</h3></div>
+      </article>
+
+      <!-- Placeholder 06 -->
+      <article class="project placeholder-card" aria-hidden="true">
+        <div class="open">
+          <span class="sh">
+            <span class="frame">
+              <span class="ph"><b>Em breve</b><small>Case 06</small></span>
+            </span>
+          </span>
+        </div>
+        <div class="cap"><h3 style="color:var(--muted)">Próximo projeto</h3></div>
+      </article>
     </div>
   </section>
 
@@ -213,7 +275,13 @@ dialog::backdrop{background:rgba(15,13,12,.94)}
 
 <dialog id="dlg" aria-labelledby="vt">
   <div class="v">
-    <div class="mn"><div class="stage" id="stage"><div class="ph"><b>Imagem em breve</b><small>adicione os arquivos deste case</small></div><img id="vi" alt="" hidden></div><div class="thumbs" id="thumbs"></div></div>
+    <div class="mn">
+      <div class="stage" id="stage">
+        <div class="ph" id="stagePh"><b>Imagem em breve</b><small>adicione os arquivos deste case</small></div>
+        <img id="vi" alt="" hidden>
+      </div>
+      <div class="thumbs" id="thumbs"></div>
+    </div>
     <aside class="side">
       <div class="bar"><button type="button" id="pv" aria-label="Imagem anterior">← Ant.</button><button type="button" id="nx" aria-label="Próxima imagem">Próx. →</button><button type="button" id="zm">Zoom</button><button type="button" class="x" id="cl">Fechar ✕</button></div>
       <h3 id="vt"></h3><p class="m" id="vm"></p><div class="tags" id="vg"></div><div id="vd"></div>
@@ -225,26 +293,79 @@ dialog::backdrop{background:rgba(15,13,12,.94)}
 document.getElementById('year').textContent=new Date().getFullYear();
 const band=document.querySelector('.band div');
 band.append(...[...band.children].map(n=>{const c=n.cloneNode(true);c.setAttribute('aria-hidden','true');return c}));
-const C={spfc:{t:'São Paulo FC — 30 anos do Mundial',m:'Estudo conceitual · Direção de arte, ilustração e linguagem visual',g:['Estudo conceitual','Ilustração','Direção de arte'],
-d:['Desenvolvi este estudo visual para celebrar os 30 anos da conquista mundial do São Paulo FC em 1992. É um estudo autoral, sem vínculo com o clube.','Explorei a memória afetiva do torcedor com ilustrações autorais, manipulação de imagens e uma linguagem gráfica que mistura referências esportivas, elementos retrô e cultura de colecionáveis.','[Texto do case: desafio, conceito, processo e aplicações. A escrever.]'],
-i:['assets/spfc-capa.jpg','assets/spfc-box.jpg','assets/spfc-camiseta-poster.jpg','assets/spfc-copos.jpg','assets/spfc-livreto.jpg']}};
-C.festo={t:'Liga da Consciência — Festo',m:'Endomarketing · Criação de personagens e HQ',g:['Endomarketing','Personagens','Ilustração','HQ'],
-d:['Criei os personagens da Liga da Consciência, uma equipe de heróis usada em histórias em quadrinhos para conversar com os funcionários da Festo, empresa de automação industrial, sobre segurança no trabalho, produtividade e combate ao desperdício.','Em vez de um comunicado sério, cada tema ganhou um personagem com personalidade própria. Eles vivem em quadrinhos de linguagem direta e visual de gibi, para que a mensagem seja lida, lembrada e comentada pela equipe.','Meu trabalho foi a criação dos personagens e a aplicação visual deles nas HQs.'],
-i:['assets/festo-liga-capa.jpg','assets/festo-liga-hq.jpg']};
-for(let n=3;n<=5;n++)C['p'+n]={t:'Nome do projeto',m:'Categoria · Ano',g:['Categoria'],d:['[Resumo do case: desafio, solução e resultado. Em breve.]'],i:[]};
-const $=s=>document.querySelector(s),dlg=$('#dlg'),st=$('#stage'),vi=$('#vi'),th=$('#thumbs');let cur,ix=0;
-function show(k){const c=C[cur],n=c.i.length;ix=n?(k+n)%n:0;st.classList.remove('z');vi.hidden=!n;
- if(n){vi.src=c.i[ix];vi.alt=c.t+' — imagem '+(ix+1)+' de '+n}
- th.querySelectorAll('button').forEach((b,j)=>b.classList.toggle('on',j===ix))}
-vi.onerror=()=>{vi.hidden=true};
-function openCase(id){cur=id;const c=C[id];$('#vt').textContent=c.t;$('#vm').textContent=c.m;
- $('#vg').innerHTML=c.g.map(x=>'<span>'+x+'</span>').join('');$('#vd').innerHTML=c.d.map(x=>'<p>'+x+'</p>').join('');
- th.innerHTML=c.i.map((s,j)=>'<button type="button" aria-label="Ver imagem '+(j+1)+'"><img src="'+s+'" alt=""></button>').join('');
- th.querySelectorAll('button').forEach((b,j)=>b.onclick=()=>show(j));show(0);dlg.showModal();dlg.querySelector('.side').scrollTop=0}
+
+const C={
+  festo:{
+    t:'Liga da Consciência — Festo',
+    m:'Endomarketing · Criação de personagens e HQ',
+    g:['Endomarketing','Personagens','Ilustração','HQ'],
+    d:[
+      'Criei os personagens da Liga da Consciência, uma equipe de heróis usada em histórias em quadrinhos para conversar com os funcionários da Festo, empresa de automação industrial, sobre segurança no trabalho, produtividade e combate ao desperdício.',
+      'Em vez de um comunicado sério, cada tema ganhou um personagem com personalidade própria. Eles vivem em quadrinhos de linguagem direta e visual de gibi, para que a mensagem seja lida, lembrada e comentada pela equipe.',
+      'Meu trabalho foi a criação dos personagens e a aplicação visual deles nas HQs.'
+    ],
+    i:['assets/festo-liga-capa.jpg','assets/festo-liga-hq.jpg']
+  },
+  spfc:{
+    t:'São Paulo FC — 30 anos do Mundial',
+    m:'Estudo conceitual · Direção de arte, ilustração e linguagem visual',
+    g:['Estudo conceitual','Ilustração','Direção de arte'],
+    d:[
+      'Desenvolvi este estudo visual para celebrar os 30 anos da conquista mundial do São Paulo FC em 1992. É um estudo autoral, sem vínculo com o clube.',
+      'Explorei a memória afetiva do torcedor com ilustrações autorais, manipulação de imagens e uma linguagem gráfica que mistura referências esportivas, elementos retrô e cultura de colecionáveis.',
+      '[Texto do case: desafio, conceito, processo e aplicações. A escrever.]'
+    ],
+    i:['assets/spfc-capa.jpg','assets/spfc-box.jpg','assets/spfc-camiseta-poster.jpg','assets/spfc-copos.jpg','assets/spfc-livreto.jpg']
+  }
+};
+
+const $=s=>document.querySelector(s),dlg=$('#dlg'),st=$('#stage'),stagePh=$('#stagePh'),vi=$('#vi'),th=$('#thumbs');
+let cur,ix=0;
+
+function show(k){
+  const c=C[cur],n=c.i.length;
+  ix=n?(k+n)%n:0;
+  st.classList.remove('z');
+  vi.hidden=!n;
+  stagePh.hidden=!!n;
+  if(n){
+    vi.src=c.i[ix];
+    vi.alt=c.t+' — imagem '+(ix+1)+' de '+n;
+  }
+  th.querySelectorAll('button').forEach((b,j)=>b.classList.toggle('on',j===ix));
+}
+
+vi.onerror=()=>{
+  vi.hidden=true;
+  stagePh.hidden=false;
+};
+
+function openCase(id){
+  cur=id;
+  const c=C[id];
+  if(!c)return;
+  $('#vt').textContent=c.t;
+  $('#vm').textContent=c.m;
+  $('#vg').innerHTML=c.g.map(x=>'<span>'+x+'</span>').join('');
+  $('#vd').innerHTML=c.d.map(x=>'<p>'+x+'</p>').join('');
+  th.innerHTML=c.i.map((s,j)=>'<button type="button" aria-label="Ver imagem '+(j+1)+'"><img src="'+s+'" alt="" onerror="this.style.opacity=0.2"></button>').join('');
+  th.querySelectorAll('button').forEach((b,j)=>b.onclick=()=>show(j));
+  show(0);
+  dlg.showModal();
+  dlg.querySelector('.side').scrollTop=0;
+}
+
 document.querySelectorAll('[data-case]').forEach(b=>b.onclick=()=>openCase(b.dataset.case));
-$('#pv').onclick=()=>show(ix-1);$('#nx').onclick=()=>show(ix+1);$('#cl').onclick=()=>dlg.close();
-const zoom=()=>{if(!vi.hidden)st.classList.toggle('z')};$('#zm').onclick=zoom;st.onclick=zoom;
-dlg.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')show(ix-1);if(e.key==='ArrowRight')show(ix+1)});
+$('#pv').onclick=()=>show(ix-1);
+$('#nx').onclick=()=>show(ix+1);
+$('#cl').onclick=()=>dlg.close();
+const zoom=()=>{if(!vi.hidden)st.classList.toggle('z')};
+$('#zm').onclick=zoom;
+st.onclick=zoom;
+dlg.addEventListener('keydown',e=>{
+  if(e.key==='ArrowLeft')show(ix-1);
+  if(e.key==='ArrowRight')show(ix+1);
+});
 </script>
 </body>
 </html>
