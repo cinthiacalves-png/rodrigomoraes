@@ -203,17 +203,27 @@ dialog::backdrop{background:rgba(15,13,12,.94)}
         <div class="cap"><h3>Infográficos de Futebol — Footballco</h3></div>
       </article>
 
-      <!-- Placeholder 03 -->
-      <article class="project placeholder-card" aria-hidden="true">
-        <div class="open">
-          <span class="sh">
-            <span class="frame">
-              <span class="ph"><b>Em breve</b><small>Case 03</small></span>
-            </span>
-          </span>
-        </div>
-        <div class="cap"><h3 style="color:var(--muted)">Próximo projeto</h3></div>
-      </article>
+<!-- Case 3: E-book Mundial de Clubes FIFA 2025 -->
+<article class="project">
+  <button class="open" type="button" data-case="mundial"
+    aria-label="Abrir E-book Mundial de Clubes FIFA 2025">
+    <span class="sh">
+      <span class="frame">
+        <img
+          src="assets/ebook-mundial-clubes-fifa.png"
+          alt="Capa do e-book informativo sobre o Mundial de Clubes FIFA 2025"
+          onerror="this.style.display='none'">
+        <span class="ph">
+          <b>Mundial de<br>Clubes 2025</b>
+          <small>assets/ebook-mundial-clubes-fifa.png</small>
+        </span>
+      </span>
+    </span>
+  </button>
+  <div class="cap">
+    <h3>E-book Mundial de Clubes FIFA 2025</h3>
+  </div>
+</article>
 
       <!-- Placeholder 04 -->
       <article class="project placeholder-card" aria-hidden="true">
@@ -327,7 +337,37 @@ const C={
       'assets/goal-grafico-7.png'
     ]
   }
-};
+  mundial:{
+    t:'E-book Mundial de Clubes FIFA 2025',
+    m:'Design editorial · Ilustração · Futebol',
+    g:['E-book','Design Editorial','Ilustração','Diagramação'],
+    d:[
+      'Um e-book desenvolvido para ajudar o fã de futebol a entender tudo o que precisava saber antes do Mundial de Clubes FIFA de 2025.',
+      'O material reúne informações sobre o funcionamento da competição, como seriam as pontuações, detalhes sobre o troféu e curiosidades do torneio, organizadas em uma publicação clara e fácil de consultar.',
+      'O projeto se destaca pela linguagem visual clean e leve, com ilustrações autorais e uma diagramação que transforma informações esportivas em uma experiência visual dinâmica e acessível.'
+    ],
+    i:[
+      'assets/ebook-mundial-clubes-fifa.png',
+      'assets/ebook-mundial-clubes-fifa2.png',
+      'assets/ebook-mundial-clubes-fifa3.png',
+      'assets/ebook-mundial-clubes-fifa4.png',
+      'assets/ebook-mundial-clubes-fifa5.png',
+      'assets/ebook-mundial-clubes-fifa6.png',
+      'assets/ebook-mundial-clubes-fifa7.png',
+      'assets/ebook-mundial-clubes-fifa8.png',
+      'assets/ebook-mundial-clubes-fifa9.png',
+      'assets/ebook-mundial-clubes-fifa10.png',
+      'assets/ebook-mundial-clubes-fifa11.png',
+      'assets/ebook-mundial-clubes-fifa12.png',
+      'assets/ebook-mundial-clubes-fifa13.png',
+      'assets/ebook-mundial-clubes-fifa14.png',
+      'assets/ebook-mundial-clubes-fifa15.png',
+      'assets/ebook-mundial-clubes-fifa16.png',
+      'assets/ebook-mundial-clubes-fifa17.png',
+      'assets/ebook-mundial-clubes-fifa18.png'
+    ]
+  }
+  };
 
 const $=s=>document.querySelector(s),dlg=$('#dlg'),st=$('#stage'),stagePh=$('#stagePh'),vi=$('#vi'),th=$('#thumbs');
 let cur,ix=0;
