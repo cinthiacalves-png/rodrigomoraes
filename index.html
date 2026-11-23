@@ -12,6 +12,7 @@
 :root{--paper:#e9e1cf;--paper2:#d8cdb3;--ink:#0f0d0c;--pink:#ff2d95;--acid:#b6ff1f;--muted:#5d564a;--d:Anton,Impact,"Arial Narrow",sans-serif;--m:"Permanent Marker","Comic Sans MS",cursive;--t:"Special Elite","Courier New",monospace;--b:Karla,"Helvetica Neue",Arial,sans-serif;--max:1180px;
 --tear2:polygon(0 1.5%,8% 0,19% 2%,33% .3%,47% 2.4%,60% 0,74% 2%,88% .5%,100% 2%,100% 98.5%,90% 100%,77% 97.6%,63% 100%,49% 98%,35% 100%,21% 97.8%,9% 100%,0 97.5%)}
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--b);overflow-x:hidden}
 body:has(dialog[open]){overflow:hidden}
@@ -30,26 +31,25 @@ img{display:block;max-width:100%}
 nav{display:flex;gap:22px;align-items:center;font:400 14px var(--t);text-transform:uppercase}
 nav a:not(.cl):hover{background:var(--pink)}
 .cl{background:var(--acid);border:2px solid var(--ink);padding:9px 14px;box-shadow:4px 4px 0 var(--ink)}
-.hero{padding:64px 0 56px;display:grid;grid-template-columns:1.2fr .8fr;column-gap:5%;row-gap:26px;align-items:start}
-.hl{grid-column:1}.hl .tag{margin-bottom:26px}
-h1{font:400 clamp(50px,8.2vw,112px)/.92 var(--d);text-transform:uppercase;margin:0}
+.hero{padding:48px 0 44px;display:grid;grid-template-columns:1fr 290px;column-gap:6%;row-gap:24px;align-items:start}
+.hl{grid-column:1}.hl .tag{margin-bottom:24px}
+h1{font:400 clamp(40px,6vw,82px)/.95 var(--d);text-transform:uppercase;margin:0}
 .r{display:block;animation:up .8s cubic-bezier(.2,.9,.3,1) both}
 .r:nth-child(2){animation-delay:.1s;padding-left:4%}.r:nth-child(3){animation-delay:.2s;position:relative;width:max-content;color:transparent;-webkit-text-stroke:1.5px var(--ink)}
 .r .mk{margin-left:.12em;animation:pop .7s .6s cubic-bezier(.2,1.4,.4,1) both}
-.scr{position:absolute;left:0;bottom:-6px;width:100%;height:20px}
+.scr{position:absolute;left:0;bottom:-6px;width:100%;height:16px}
 @keyframes up{from{transform:translateY(50%);opacity:0}}
 @keyframes pop{from{transform:rotate(-12deg) scale(.6);opacity:0}}
-.hc{grid-column:1;max-width:360px;margin-left:4%}
+.hc{grid-column:1;max-width:380px;margin-left:4%}
 .hc p{margin:0 0 22px;color:#2f2b26}
 .arrow{font:400 14px var(--t);text-transform:uppercase;border-bottom:3px solid var(--pink);padding-bottom:6px}
-.collage{grid-column:2;grid-row:1/3;position:relative;padding:18px 18px 40px}
-.duo{position:relative;background:var(--pink);transform:rotate(1.5deg);box-shadow:7px 7px 0 var(--ink)}
-.duo img{aspect-ratio:4/5;width:100%;object-fit:cover;filter:grayscale(1) contrast(1.5) brightness(1.12);mix-blend-mode:multiply}
-.duo::after{content:"";position:absolute;inset:0;background:radial-gradient(circle,#0f0d0c 1.2px,transparent 1.7px) 0 0/6px 6px;opacity:.28}
-.tape{position:absolute;z-index:2;width:110px;height:30px;top:-14px;left:50%;margin-left:-55px;background:rgba(255,236,150,.85);transform:rotate(-4deg)}
-.scrap{position:absolute;z-index:2;left:-7%;bottom:3%;max-width:62%;background:var(--paper2);padding:14px 18px;font:400 15px/1.3 var(--t);transform:rotate(-2deg);clip-path:var(--tear2)}
-.sticker{position:absolute;z-index:3;right:-3%;top:5%;padding:10px 14px;background:var(--acid);border:2px solid var(--ink);text-align:center;font:400 32px/.95 var(--d);transform:rotate(3deg)}
-.sticker small{display:block;font:400 11px var(--t);text-transform:uppercase}
+.collage{grid-column:2;grid-row:1/3;position:relative;padding:12px 12px 30px}
+.noimg .duo{display:none}
+.duo{position:relative;background:#f5d3e3;transform:rotate(1.2deg);box-shadow:6px 6px 0 var(--ink)}
+.duo img{aspect-ratio:4/5;width:100%;object-fit:cover;filter:contrast(1.05) saturate(.85);mix-blend-mode:multiply}
+.duo::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle,#0f0d0c 1px,transparent 1.5px) 0 0/6px 6px;opacity:.07}
+.tape{position:absolute;z-index:2;width:96px;height:26px;top:-12px;left:50%;margin-left:-48px;background:rgba(255,236,150,.85);transform:rotate(-4deg)}
+.scrap{position:absolute;z-index:2;left:-9%;bottom:2%;max-width:60%;background:var(--paper2);padding:10px 14px;font:400 13px/1.3 var(--t);transform:rotate(-2deg);clip-path:var(--tear2)}
 .meta{grid-column:1/-1;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;border-top:3px solid var(--ink);padding-top:12px;font:400 13px var(--t);text-transform:uppercase;letter-spacing:.06em}
 .bw{position:relative;margin:34px 0 6px}
 .bw .tag{position:absolute;top:-16px;left:5%;z-index:4;transform:rotate(-2deg)}
@@ -70,14 +70,11 @@ h2{font:400 clamp(38px,5.4vw,72px)/.94 var(--d);text-transform:uppercase;margin:
 .open:focus-visible{outline:3px solid var(--pink);outline-offset:8px}
 .project:nth-child(odd) .open{transform:rotate(-1deg)}.project:nth-child(even) .open{transform:rotate(1.2deg)}
 .open:hover{transform:rotate(0) translateY(-6px)!important}
-
-/* Moldura inspirada no retrato do Rodrigo, preservando cor original */
 .sh{display:block}
 .frame{display:block;position:relative;aspect-ratio:1.5;background:var(--paper2);border:2px solid var(--ink);box-shadow:6px 6px 0 var(--ink);overflow:hidden;transition:box-shadow .25s ease}
 .open:hover .frame{box-shadow:8px 8px 0 var(--ink)}
 .frame img{display:block;position:relative;z-index:2;width:100%;height:100%;object-fit:cover;transition:transform .45s ease}
 .open:hover .frame img{transform:scale(1.03)}
-
 .ph{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;background:repeating-linear-gradient(135deg,transparent 0 12px,rgba(15,13,12,.08) 12px 14px)}
 .ph b{font:400 clamp(20px,2.4vw,28px)/1 var(--d);text-transform:uppercase;color:rgba(15,13,12,.55)}
 .ph small{font:400 12px var(--t);text-transform:uppercase;margin-top:8px;color:var(--muted)}
@@ -132,7 +129,7 @@ dialog::backdrop{background:rgba(15,13,12,.94)}
 @media(prefers-reduced-motion:reduce){.r,.r .mk,.band div,.v{animation:none}html{scroll-behavior:auto}.open,.frame img{transition:none}}
 @media(max-width:860px){
 .wrap{width:min(100% - 36px,var(--max))}.topbar{height:64px}nav{gap:12px;font-size:12px}.brand{font-size:19px}.cl{padding:7px 10px}
-.hero{grid-template-columns:1fr}.collage,.hc,.hl{grid-column:1;grid-row:auto}.collage{max-width:380px;margin:0 auto;order:2}.hc{order:3;margin-left:0}.meta{order:4}
+.hero{grid-template-columns:1fr}.collage,.hc,.hl{grid-column:1;grid-row:auto}.collage{max-width:250px;margin:0 auto;order:2}.hc{order:3;margin-left:0}.meta{order:4}
 .grid{grid-template-columns:1fr 1fr;gap:44px 20px}.project:nth-child(n){margin-top:0}.project:nth-child(even){margin-top:30px}
 .head{flex-direction:column;align-items:flex-start;padding-top:64px}
 .about{grid-template-columns:1fr;gap:34px}
@@ -158,10 +155,9 @@ dialog::backdrop{background:rgba(15,13,12,.94)}
       <p>Sou <strong>Rodrigo Moraes</strong>, designer e diretor de arte. Crio narrativas visuais, ilustrações e experiências gráficas que conectam marcas, histórias e pessoas.</p>
       <a class="arrow" href="#galeria">Explorar trabalhos ↘</a>
     </div>
-    <div class="collage">
-      <div class="duo"><span class="tape"></span><img src="assets/rodrigo.jpeg" alt="Rodrigo Moraes sorrindo, de gorro rosa"></div>
+    <div class="collage" id="collage">
+      <div class="duo"><span class="tape"></span><img id="rod" src="assets/rodrigo.jpg" alt="Rodrigo Moraes sorrindo, de gorro rosa"></div>
       <div class="scrap">arte, ilustração e conteúdo</div>
-      <span class="sticker">13<small>anos</small></span>
     </div>
     <div class="meta"><span>13 anos de experiência</span><span>Design · Ilustração · Conteúdo</span><span>Brasil</span></div>
   </section>
@@ -180,12 +176,10 @@ dialog::backdrop{background:rgba(15,13,12,.94)}
       <!-- Case 1: Festo -->
       <article class="project">
         <button class="open" type="button" data-case="festo" aria-label="Abrir Liga da Consciência — Festo">
-          <span class="sh">
-            <span class="frame">
-              <img src="assets/festo-liga-capa.jpg" alt="Personagens da Liga da Consciência diante de um monstro rosa, campanha de endomarketing da Festo" onerror="this.style.display='none'">
-              <span class="ph"><b>Liga da<br>Consciência</b><small>assets/festo-liga-capa.jpg</small></span>
-            </span>
-          </span>
+          <span class="sh"><span class="frame">
+            <img src="assets/festo-liga-capa.jpg" alt="Personagens da Liga da Consciência diante de um monstro rosa, campanha de endomarketing da Festo" onerror="this.style.display='none'">
+            <span class="ph"><b>Liga da<br>Consciência</b><small>assets/festo-liga-capa.jpg</small></span>
+          </span></span>
         </button>
         <div class="cap"><h3>Liga da Consciência — Festo</h3></div>
       </article>
@@ -193,71 +187,36 @@ dialog::backdrop{background:rgba(15,13,12,.94)}
       <!-- Case 2: Footballco -->
       <article class="project">
         <button class="open" type="button" data-case="footballco" aria-label="Abrir Infográficos de Futebol — Footballco">
-          <span class="sh">
-            <span class="frame">
-              <img src="assets/goal-grafico-capa.png" alt="Infográficos visuais de futebol produzidos para a Footballco" onerror="this.style.display='none'">
-              <span class="ph"><b>Footballco<br>Infográficos</b><small>assets/goal-grafico-capa.png</small></span>
-            </span>
-          </span>
+          <span class="sh"><span class="frame">
+            <img src="assets/goal-grafico-capa.png" alt="Infográficos visuais de futebol produzidos para a Footballco" onerror="this.style.display='none'">
+            <span class="ph"><b>Footballco<br>Infográficos</b><small>assets/goal-grafico-capa.png</small></span>
+          </span></span>
         </button>
         <div class="cap"><h3>Infográficos de Futebol — Footballco</h3></div>
       </article>
 
-<!-- Case 3: E-book Mundial de Clubes FIFA 2025 -->
-<article class="project">
-  <button class="open" type="button" data-case="mundial"
-    aria-label="Abrir E-book Mundial de Clubes FIFA 2025">
-    <span class="sh">
-      <span class="frame">
-        <img
-          src="assets/ebook-mundial-clubes-fifa.png"
-          alt="Capa do e-book informativo sobre o Mundial de Clubes FIFA 2025"
-          onerror="this.style.display='none'">
-        <span class="ph">
-          <b>Mundial de<br>Clubes 2025</b>
-          <small>assets/ebook-mundial-clubes-fifa.png</small>
-        </span>
-      </span>
-    </span>
-  </button>
-  <div class="cap">
-    <h3>E-book Mundial de Clubes FIFA 2025</h3>
-  </div>
-</article>
-
-      <!-- Placeholder 04 -->
-      <article class="project placeholder-card" aria-hidden="true">
-        <div class="open">
-          <span class="sh">
-            <span class="frame">
-              <span class="ph"><b>Em breve</b><small>Case 04</small></span>
-            </span>
-          </span>
-        </div>
-        <div class="cap"><h3 style="color:var(--muted)">Próximo projeto</h3></div>
+      <!-- Case 3: E-book Mundial de Clubes FIFA 2025 -->
+      <article class="project">
+        <button class="open" type="button" data-case="mundial" aria-label="Abrir E-book Mundial de Clubes FIFA 2025">
+          <span class="sh"><span class="frame">
+            <img src="assets/ebook-mundial-clubes-fifa.png" alt="Capa do e-book informativo sobre o Mundial de Clubes FIFA 2025" onerror="this.style.display='none'">
+            <span class="ph"><b>Mundial de<br>Clubes 2025</b><small>assets/ebook-mundial-clubes-fifa.png</small></span>
+          </span></span>
+        </button>
+        <div class="cap"><h3>E-book Mundial de Clubes FIFA 2025</h3></div>
       </article>
 
-      <!-- Placeholder 05 -->
+      <!-- Placeholders 04 a 06 -->
       <article class="project placeholder-card" aria-hidden="true">
-        <div class="open">
-          <span class="sh">
-            <span class="frame">
-              <span class="ph"><b>Em breve</b><small>Case 05</small></span>
-            </span>
-          </span>
-        </div>
+        <div class="open"><span class="sh"><span class="frame"><span class="ph"><b>Em breve</b><small>Case 04</small></span></span></span></div>
         <div class="cap"><h3 style="color:var(--muted)">Próximo projeto</h3></div>
       </article>
-
-      <!-- Placeholder 06 -->
       <article class="project placeholder-card" aria-hidden="true">
-        <div class="open">
-          <span class="sh">
-            <span class="frame">
-              <span class="ph"><b>Em breve</b><small>Case 06</small></span>
-            </span>
-          </span>
-        </div>
+        <div class="open"><span class="sh"><span class="frame"><span class="ph"><b>Em breve</b><small>Case 05</small></span></span></span></div>
+        <div class="cap"><h3 style="color:var(--muted)">Próximo projeto</h3></div>
+      </article>
+      <article class="project placeholder-card" aria-hidden="true">
+        <div class="open"><span class="sh"><span class="frame"><span class="ph"><b>Em breve</b><small>Case 06</small></span></span></span></div>
         <div class="cap"><h3 style="color:var(--muted)">Próximo projeto</h3></div>
       </article>
     </div>
@@ -305,6 +264,10 @@ document.getElementById('year').textContent=new Date().getFullYear();
 const band=document.querySelector('.band div');
 band.append(...[...band.children].map(n=>{const c=n.cloneNode(true);c.setAttribute('aria-hidden','true');return c}));
 
+/* Foto do Rodrigo: tenta as extensões mais comuns até achar o arquivo em assets/ */
+const rod=document.getElementById('rod'),rodOpts=['jpg','jpeg','JPG','JPEG','png','webp'];let ri=0;
+rod.onerror=()=>{ri++;if(ri<rodOpts.length)rod.src='assets/rodrigo.'+rodOpts[ri];else document.getElementById('collage').classList.add('noimg')};
+
 const C={
   festo:{
     t:'Liga da Consciência — Festo',
@@ -326,16 +289,7 @@ const C={
       'O desafio foi ir além de tabelas ou gráficos frios: cada peça combina clareza na leitura dos dados com criação visual, composições expressivas e linguagem conectada à cultura do futebol.',
       'Atuei na concepção visual e na diagramação das peças, equilibrando informação precisa, ritmo de leitura e identidade.'
     ],
-    i:[
-      'assets/goal-grafico-capa.png',
-      'assets/goal-grafico-1.png',
-      'assets/goal-grafico-2.png',
-      'assets/goal-grafico-3.png',
-      'assets/goal-grafico-4.png',
-      'assets/goal-grafico-5.png',
-      'assets/goal-grafico-6.png',
-      'assets/goal-grafico-7.png'
-    ]
+    i:['assets/goal-grafico-capa.png','assets/goal-grafico-1.png','assets/goal-grafico-2.png','assets/goal-grafico-3.png','assets/goal-grafico-4.png','assets/goal-grafico-5.png','assets/goal-grafico-6.png','assets/goal-grafico-7.png']
   },
   mundial:{
     t:'E-book Mundial de Clubes FIFA 2025',
@@ -346,28 +300,9 @@ const C={
       'O material reúne informações sobre o funcionamento da competição, como seriam as pontuações, detalhes sobre o troféu e curiosidades do torneio, organizadas em uma publicação clara e fácil de consultar.',
       'O projeto se destaca pela linguagem visual clean e leve, com ilustrações autorais e uma diagramação que transforma informações esportivas em uma experiência visual dinâmica e acessível.'
     ],
-    i:[
-      'assets/ebook-mundial-clubes-fifa.png',
-      'assets/ebook-mundial-clubes-fifa2.png',
-      'assets/ebook-mundial-clubes-fifa3.png',
-      'assets/ebook-mundial-clubes-fifa4.png',
-      'assets/ebook-mundial-clubes-fifa5.png',
-      'assets/ebook-mundial-clubes-fifa6.png',
-      'assets/ebook-mundial-clubes-fifa7.png',
-      'assets/ebook-mundial-clubes-fifa8.png',
-      'assets/ebook-mundial-clubes-fifa9.png',
-      'assets/ebook-mundial-clubes-fifa10.png',
-      'assets/ebook-mundial-clubes-fifa11.png',
-      'assets/ebook-mundial-clubes-fifa12.png',
-      'assets/ebook-mundial-clubes-fifa13.png',
-      'assets/ebook-mundial-clubes-fifa14.png',
-      'assets/ebook-mundial-clubes-fifa15.png',
-      'assets/ebook-mundial-clubes-fifa16.png',
-      'assets/ebook-mundial-clubes-fifa17.png',
-      'assets/ebook-mundial-clubes-fifa18.png'
-    ]
+    i:['assets/ebook-mundial-clubes-fifa.png','assets/ebook-mundial-clubes-fifa2.png','assets/ebook-mundial-clubes-fifa3.png','assets/ebook-mundial-clubes-fifa4.png','assets/ebook-mundial-clubes-fifa5.png','assets/ebook-mundial-clubes-fifa6.png','assets/ebook-mundial-clubes-fifa7.png','assets/ebook-mundial-clubes-fifa8.png','assets/ebook-mundial-clubes-fifa9.png','assets/ebook-mundial-clubes-fifa10.png','assets/ebook-mundial-clubes-fifa11.png','assets/ebook-mundial-clubes-fifa12.png','assets/ebook-mundial-clubes-fifa13.png','assets/ebook-mundial-clubes-fifa14.png','assets/ebook-mundial-clubes-fifa15.png','assets/ebook-mundial-clubes-fifa16.png','assets/ebook-mundial-clubes-fifa17.png','assets/ebook-mundial-clubes-fifa18.png']
   }
-  };
+};
 
 const $=s=>document.querySelector(s),dlg=$('#dlg'),st=$('#stage'),stagePh=$('#stagePh'),vi=$('#vi'),th=$('#thumbs');
 let cur,ix=0;
@@ -385,10 +320,7 @@ function show(k){
   th.querySelectorAll('button').forEach((b,j)=>b.classList.toggle('on',j===ix));
 }
 
-vi.onerror=()=>{
-  vi.hidden=true;
-  stagePh.hidden=false;
-};
+vi.onerror=()=>{vi.hidden=true;stagePh.hidden=false};
 
 function openCase(id){
   cur=id;
